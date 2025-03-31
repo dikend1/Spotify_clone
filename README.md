@@ -27,9 +27,24 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/dikend1/Spotify_clone.git
 cd Spotify_clone
-python -m venv .venv
-.venv\Scripts\activate  # On Windows
-source .venv/bin/activate  # On MacOS/Linux
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
+
+2. Set up a virtual environment:
+   python -m venv .venv 
+   ```bash
+    .venv\Scripts\activate MAC
+   source .venv/bin/activate WIN
+   
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   
+6. Apply database migrations:
+   ```bash
+   python manage.py migrate
+   
+8. Run the development server:
+   ```bash
+   python manage.py runserver
+
+
+
