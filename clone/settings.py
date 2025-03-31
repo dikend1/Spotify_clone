@@ -25,7 +25,7 @@ load_dotenv(dotenv_path=env_path)
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'alalalalsnbbcbcbcndbfbfbv'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -88,10 +88,10 @@ default_db_url = os.getenv('DATABASE_URL')
 if not default_db_url:
     default_db_url = "postgresql://{user}:{password}@{host}:{port}/{name}".format(
         user=os.getenv('DB_USER', 'postgres'),
-        password=os.getenv('DB_PASSWORD', '123654'),
+        password=os.getenv('DB_PASSWORD', ''),
         host=os.getenv('DB_HOST', 'localhost'),
         port=os.getenv('DB_PORT', '5432'),
-        name=os.getenv('DB_NAME', 'stackoverflowDB')
+        name=os.getenv('DB_NAME', 'postgres')
     )
 
 DATABASES = {
