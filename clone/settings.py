@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["web-production-bfd6.up.railway.app"]
+ALLOWED_HOSTS = ["web-production-bfd6.up.railway.app", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = ["https://web-production-bfd6.up.railway.app"]
 
 
@@ -82,17 +82,19 @@ WSGI_APPLICATION = 'clone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('PGDATABASE', 'postgres'),
-        'USER': os.getenv('PGUSER', 'postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-        'HOST': os.getenv('RAILWAY_PRIVATE_DOMAIN', 'localhost'),
-        'PORT': os.getenv('PGPORT', '5432'),
-    }
-}
+default_db_url = os.getenv('DATABASE_URL')
+if not default_db_url:
+    default_db_url = "postgresql://{user}:{password}@{host}:{port}/{name}".format(
+        user=os.getenv('DB_USER', 'postgres'),
+        password=os.getenv('DB_PASSWORD', '123654'),
+        host=os.getenv('DB_HOST', 'localhost'),
+        port=os.getenv('DB_PORT', '5432'),
+        name=os.getenv('DB_NAME', 'stackoverflowDB')
+    )
 
+DATABASES = {
+    'default': dj_database_url.config(default=default_db_url)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
