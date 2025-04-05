@@ -60,7 +60,7 @@
 
   <!-- Main Content -->
   <div class="flex-1">
-      
+
     <br>
     <br>
     <header class="header-container">
@@ -75,7 +75,7 @@
             </div>
         </form>
     </header>
-    
+
     <!-- Popular Tracks Section -->
     <div class="p-5">
       <br>
@@ -85,7 +85,9 @@
         {% for track in track_list %}
         <div class="flex justify-between items-center py-3">
           <div class="flex items-center space-x-4">
-            <img src="{{track.track_image}}" alt="{{track.track_name}}" class="w-12 h-12">
+            <img src="{{ track.trackimage }}" alt="{{ track.track_name }}" width="50" height="50">
+
+
             <div>
               <a href="/music/{{track.trackid}}">
                 <p class="text-base font-medium">{{track.track_name}}</p>
@@ -100,7 +102,7 @@
       </div>
       <!-- <a href="#" class="text-green-500 text-sm">See more</a> -->
     </div>
-    
+
   </div>
 
 </body>
